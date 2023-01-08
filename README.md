@@ -21,12 +21,11 @@ $ starknet tx_status --hash 0x7067a0b671587f52adc49f11d79eb17b5df86820fc3bf0e71b
 $ starknet-compile Starkatana.cairo \
     --output Starkatana_compiled.json \
     --abi Starkatana_abi.json
-$ starknet declare --contract Starkatana_compiled.json
+$ starknet declare --contract Starkatana_compiled.json --max_fee 999999995550000
 >
-Sending the transaction with max_fee: 0.000156 ETH (156109659823106 WEI).
 Declare transaction was sent.
-Contract class hash: 0x340c199c1c3495bce67566a83f7ac7817a49d89864e3f05b9f264a2c33c1300
-Transaction hash: 0x1005c5219fbfbb1f1dbfc7329c8b69f66073aae2143a3ce7e891d3ff19da421
+Contract class hash: 0x4f583696b59f2c3b81becd117c14b95933d186111eff633d215e7a0e3fdb2d2
+Transaction hash: 0x9ed286c1869e96e0a01a671ff98f07cc1318383ca0f6122299289208037e10
 ```
 
 3. Change the `string` to `felt` for constructor calldata:
@@ -42,10 +41,11 @@ $ python
 4. Deploy the contract
 ```bash
 \\ $ starknet deploy --class_hash <Class_Hash> \
-\\    --inputs <name: felt> <symbol: felt> <decimals> <initial_supply> <recipient>
+\\    --inputs <name: felt> <symbol: felt> <owner: felt>
 
-$ starknet deploy --class_hash 0x340c199c1c3495bce67566a83f7ac7817a49d89864e3f05b9f264a2c33c1300 \
-    --inputs 394103262183566193290849 21323 18 1000 0 0x6368016dcd1e3846aedc4b4828fb15ff6397a096424870e59da68f3ff40d7ee
+$ starknet deploy --class_hash 0x4f583696b59f2c3b81becd117c14b95933d186111eff633d215e7a0e3fdb2d2 \
+    --inputs 394103262183566193290849 21323 0x01a64e56778a3d208caac766f4f211a227f27eb89598f91393ff038dd0c7e1b5 \
+    --max_fee 999999995550000
 >
 Sending the transaction with max_fee: 0.000714 ETH (714047439973103 WEI).
 Invoke transaction for contract deployment was sent.

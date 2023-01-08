@@ -1,7 +1,13 @@
 %lang starknet
 
-from openzeppelin.token.erc721.presets.ERC721MintableBurnable import (
+from openzeppelin.token.erc721.enumerable.presets.ERC721EnumerableMintableBurnable import (
     constructor,
+    totalSupply,
+    tokenByIndex,
+    tokenOfOwnerByIndex,
+    getApproved,
+    isApprovedForAll,
+    owner,
     name,
     symbol,
     tokenURI,
@@ -9,6 +15,8 @@ from openzeppelin.token.erc721.presets.ERC721MintableBurnable import (
     setTokenURI,
     balanceOf,
     approve,
+    transferOwnership,
+    renounceOwnership,
     setApprovalForAll,
     transferFrom,
     safeTransferFrom,
