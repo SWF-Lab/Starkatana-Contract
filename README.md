@@ -10,13 +10,18 @@ $ python --version
 > Python 3.9.15 // ✅
 
 $ pip install cairo-lang
+$ pip install openzeppelin-cairo-contracts
+```
+
+2. Setting the Starknet CLI:
+```bash
 $ export STARKNET_NETWORK=alpha-goerli
 $ export STARKNET_WALLET=starkware.starknet.wallets.open_zeppelin.OpenZeppelinAccount
 $ starknet tx_status --hash 0x7067a0b671587f52adc49f11d79eb17b5df86820fc3bf0e71b82f460cc40738
 > Print the tx which is accepted in L1 // ✅
 ```
 
-2. Compile & Declare the Token Contract
+3. Compile & Declare the Token Contract:
 ```bash
 $ starknet-compile Starkatana.cairo \
     --output Starkatana_compiled.json \
@@ -28,7 +33,7 @@ Contract class hash: 0x4f583696b59f2c3b81becd117c14b95933d186111eff633d215e7a0e3
 Transaction hash: 0x9ed286c1869e96e0a01a671ff98f07cc1318383ca0f6122299289208037e10
 ```
 
-3. Change the `string` to `felt` for constructor calldata:
+4. Change the `string` to `felt` for constructor calldata:
 ```python
 $ python
 >>> from nile.utils import str_to_felt
@@ -38,7 +43,7 @@ $ python
 21323
 ```
 
-4. Deploy the contract
+5. Deploy the contract:
 ```bash
 \\ $ starknet deploy --class_hash <Class_Hash> \
 \\    --inputs <name: felt> <symbol: felt> <owner: felt>
