@@ -1,0 +1,22 @@
+node_modules
+.vscode
+.env
+.DS_Store
+
+# Hardhat files
+cache
+artifacts
+
+# Python virtual environment
+.venv
+myENV
+
+# Python artifacts
+__pycache__
+.pytest_cache
+
+# Starknet plugin
+starknet-artifacts
+
+# Spike scripts
+playground
