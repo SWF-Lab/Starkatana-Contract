@@ -153,12 +153,12 @@ func max_per_address{syscall_ptr: felt*, pedersen_ptr: HashBuiltin*, range_check
     return Starkatana.max_per_address();
 }
 
-// ipfs://bafkreiej2dyqtzwldqblv52cvfaw4vvargczrokcrqkduhkyptpimpe3si
+// ipfs://bafkreif6kwowktut7qajtzokh43uo3f2iditsqual4alzb5r6dkhnvdqye/
 @view
 func contractURI() -> (
     contractURI_len: felt, contractURI: felt*
 ) {
-    return (66, new (105,112,102,115,58,47,47,98,97,102,107,114,101,105,101,106,50,100,121,113,116,122,119,108,100,113,98,108,118,53,50,99,118,102,97,119,52,118,118,97,114,103,99,122,114,111,107,99,114,113,107,100,117,104,107,121,112,116,112,105,109,112,101,51,115,105));
+    return (66, new (105, 112, 102, 115, 58, 47, 47, 98, 97, 102, 107, 114, 101, 105, 102, 54, 107, 119, 111, 119, 107, 116, 117, 116, 55, 113, 97, 106, 116, 122, 111, 107, 104, 52, 51, 117, 111, 51, 102, 50, 105, 100, 105, 116, 115, 113, 117, 97, 108, 52, 97, 108, 122, 98, 53, 114, 54, 100, 107, 104, 110, 118, 100, 113, 121, 101));
 }
 
 //
@@ -166,7 +166,7 @@ func contractURI() -> (
 //
 
 @external
-func initialize{syscall_ptr: felt*, pedersen_ptr: HashBuiltin*, range_check_ptr}( 
+func initializer{syscall_ptr: felt*, pedersen_ptr: HashBuiltin*, range_check_ptr}( 
     owner: felt
 ) {
     Proxy.initializer(owner);
@@ -175,6 +175,7 @@ func initialize{syscall_ptr: felt*, pedersen_ptr: HashBuiltin*, range_check_ptr}
     ERC721Enumerable.initializer();
     Starkatana.initializer(401);
     Royalty.initializer();
+    
     return ();
 }
 

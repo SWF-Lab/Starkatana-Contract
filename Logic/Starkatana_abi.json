@@ -409,7 +409,12 @@
         "type": "function"
     },
     {
-        "inputs": [],
+        "inputs": [
+            {
+                "name": "owner",
+                "type": "felt"
+            }
+        ],
         "name": "initializer",
         "outputs": [],
         "type": "function"
