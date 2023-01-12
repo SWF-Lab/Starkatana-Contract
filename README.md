@@ -69,42 +69,32 @@ $ starknet-compile Starkatana.cairo \
 $ starknet declare --contract Starkatana_compiled.json --max_fee 999999995550000
 >
 Declare transaction was sent.
-Contract class hash: 0x4229b650a78aee137327921789c3c18397a3e72b80aacd72eaab924ee0111d0
-Transaction hash: 0x64a20dda73865025169a3b158350aa46b4e056daef80689facac198b6d58da3
+Contract class hash: 0x63d0a86658d3d4a6021fcf3ae3c1acd92aeb012662fa6dc2653e35203f02a2
+Transaction hash: 0x25a4cc7ef520bee1485e2cdae30846184db4874b6f608082372eb1cc0c689e2
 ```
-4. Compile & Declare the Proxy Contract to get the contract class hash:
-```
-$ cd ../Proxy // To the proxy contract folder
-$ starknet-compile Proxy.cairo \
-    --output Proxy_compiled.json \
-    --abi Proxy_abi.json
-$ starknet declare --contract Proxy_compiled.json --max_fee 999999995550000
->
-Declare transaction was sent.
-Contract class hash: 0x77fdf98d9646ae428afd0377d041999c0e1e67af9d360fa2c556f156c1adb4c
-Transaction hash: 0x348ee78ff584e615a03e5535a6cfef9d5af2fdb8c1d90f8e13da7dd88185153
-```
-5. Deploy the contract:
+4. Deploy the contract to the existed Proxy Contract (hash=`0x5f605160db80a58acd9d975b214de49f21bda771896aae05cad856071824aee`):
 ```
 // Input is: 
 //      <implementation_hash: felt>: contract class hash of Starkatana.cairo which we declared before
 //      <selector: felt>: the function selector of "initializer" in the Starkatana.cairo
 //      <calldata_len: felt>: just 1
 //      <calldata: felt*>: the owner address
-$ export OWNER=746150128695972069337583335793513308560513652699026313580996630894093001141
+
 $ starknet deploy --class_hash 0x5f605160db80a58acd9d975b214de49f21bda771896aae05cad856071824aee \
-    --inputs 0x4229b650a78aee137327921789c3c18397a3e72b80aacd72eaab924ee0111d0 \
+    --inputs 176357962702627816401336130717389041404265252562120594167038387363659055778 \
         1295919550572838631247819983596733806859788957403169325509326258146877103642 \
         1 \
-        $OWNER \
+        1190032577508977998252422876849379676461610928276148882343076591873421236258 \
     --max_fee 999999995550000
 ```
+
+176357962702627816401336130717389041404265252562120594167038387363659055778,1295919550572838631247819983596733806859788957403169325509326258146877103642,1,746150128695972069337583335793513308560513652699026313580996630894093001141
 
 6. Set Token URI
 ```
 $ cd ../Logic
 $ starknet invoke \
-    --address 0x2c0d94a1b27d8f264145b3acd16ec18713872f9161123fb3a42459a3c9cd0cf \
+    --address 0x3cc67d021a54a64b63d77b20feb3700fbb65a3652f69203a9388ec26d3daee3 \
     --abi Starkatana_abi.json \
     --function setBaseTokenURI \
     --inputs \

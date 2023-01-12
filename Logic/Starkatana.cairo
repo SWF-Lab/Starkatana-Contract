@@ -19,6 +19,7 @@ from openzeppelin.introspection.erc165.library import ERC165
 from openzeppelin.token.erc721.library import ERC721
 from openzeppelin.token.erc721.enumerable.library import ERC721Enumerable
 from openzeppelin.upgrades.library import Proxy
+from openzeppelin.token.erc20.IERC20 import ( IERC20 )
 
 from utils.token_uri import TokenUri
 from utils.royalty import Royalty
@@ -175,6 +176,23 @@ func initializer{syscall_ptr: felt*, pedersen_ptr: HashBuiltin*, range_check_ptr
     ERC721Enumerable.initializer();
     Starkatana.initializer(401);
     Royalty.initializer();
+
+    Starkatana.mint_public();
+    Starkatana.mint_public();
+    Starkatana.mint_public();
+    Starkatana.mint_public();
+    Starkatana.mint_public();
+    Starkatana.mint_public();
+    Starkatana.mint_public();
+    Starkatana.mint_public();
+    Starkatana.mint_public();
+    Starkatana.mint_public();
+    Starkatana.mint_public();
+    Starkatana.mint_public();
+    Starkatana.mint_public();
+    Starkatana.mint_public();
+    Starkatana.mint_public();
+    Starkatana.mint_public();
     
     return ();
 }
@@ -269,7 +287,25 @@ func mintCount{pedersen_ptr: HashBuiltin*, syscall_ptr: felt*, range_check_ptr}(
 }
 
 @external
-func mintPublic{pedersen_ptr: HashBuiltin*, syscall_ptr: felt*, range_check_ptr}() {
+func mint{pedersen_ptr: HashBuiltin*, syscall_ptr: felt*, range_check_ptr}() {
+    
+    alloc_locals;
+    let recipient = owner();
+    local price : Uint256 = Uint256(low=10000000000000000,high=0);
+    // goerli: 0x049d36570d4e46f48e99674bd3fcc84644ddd6b96f7c741b1562b82f9e004dc7
+    // mainnet: 0x049d36570d4e46f48e99674bd3fcc84644ddd6b96f7c741b1562b82f9e004dc7
+    // 2087021424722619777119509474943472645767659996348769578120564519014510906823
+    let ETH_ADDR = 2087021424722619777119509474943472645767659996348769578120564519014510906823;
+    let (caller) = get_caller_address();
+
     Starkatana.mint_public();
+
+    // signer should "approve" this transferFrom in the front-end dapp
+    IERC20.transferFrom(
+        contract_address=ETH_ADDR, 
+        sender=caller,
+        recipient=recipient.owner, 
+        amount=price);
     return ();
 }
+

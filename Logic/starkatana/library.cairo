@@ -34,7 +34,7 @@ namespace Starkatana {
         max_supply: felt
     ) {
         Starkatana_max_supply.write(max_supply);
-        Starkatana_max_per_address.write(5);
+        Starkatana_max_per_address.write(16);
         return ();
     }
 
@@ -102,13 +102,13 @@ namespace Starkatana {
         let (total_supply) = ERC721Enumerable.total_supply();
         let (max_supply_) = Starkatana.max_supply();
         let (new_token_id, _) = uint256_add(total_supply, Uint256(1, 0));
-        with_attr error_message("Mint: cannot be more than 400 starkatana") {
+        with_attr error_message("Mint: cannot be more than 401 Starkatanas") {
             assert_uint256_le(new_token_id, Uint256(max_supply_, 0));
         }
         let (minted_count_) = minted_count(to);
         let (max_per_address_) = max_per_address();
         let new_minted_count = minted_count_ + 1;
-        with_attr error_message("Mint: cannot mint more than 5 punk") {
+        with_attr error_message("Mint: cannot mint more than 16 Starkatanas") {
             assert_le_felt(new_minted_count, max_per_address_);
         }
         ERC721Enumerable._mint(to, new_token_id);
