@@ -33,7 +33,12 @@ namespace TokenUri {
         alloc_locals;
         let (local base_token_uri_len, local base_token_uri_) = base_token_uri();
         let (added_len) = _append_number_ascii(tokenId, base_token_uri_ + base_token_uri_len);
-        return (base_token_uri_len + added_len, base_token_uri_);
+        assert base_token_uri_[base_token_uri_len + added_len] = 46;
+        assert base_token_uri_[base_token_uri_len + added_len + 1] = 106;
+        assert base_token_uri_[base_token_uri_len + added_len + 2] = 115;
+        assert base_token_uri_[base_token_uri_len + added_len + 3] = 111;
+        assert base_token_uri_[base_token_uri_len + added_len + 4] = 110;
+        return (base_token_uri_len + added_len + 5, base_token_uri_);
     }
 
     //
