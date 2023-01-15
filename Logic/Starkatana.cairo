@@ -292,7 +292,7 @@ func mint{pedersen_ptr: HashBuiltin*, syscall_ptr: felt*, range_check_ptr}() {
     
     alloc_locals;
     let recipient = owner();
-    local price : Uint256 = Uint256(low=10000000000000000,high=0);
+    local price : Uint256 = Uint256(low=20000000000000000,high=0);
     // goerli: 0x049d36570d4e46f48e99674bd3fcc84644ddd6b96f7c741b1562b82f9e004dc7
     // mainnet: 0x049d36570d4e46f48e99674bd3fcc84644ddd6b96f7c741b1562b82f9e004dc7
     // 2087021424722619777119509474943472645767659996348769578120564519014510906823
