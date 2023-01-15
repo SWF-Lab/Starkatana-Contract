@@ -178,22 +178,22 @@ func initializer{syscall_ptr: felt*, pedersen_ptr: HashBuiltin*, range_check_ptr
     Starkatana.initializer(401);
     Royalty.initializer();
 
-    Starkatana.mint_public();
-    Starkatana.mint_public();
-    Starkatana.mint_public();
-    Starkatana.mint_public();
-    Starkatana.mint_public();
-    Starkatana.mint_public();
-    Starkatana.mint_public();
-    Starkatana.mint_public();
-    Starkatana.mint_public();
-    Starkatana.mint_public();
-    Starkatana.mint_public();
-    Starkatana.mint_public();
-    Starkatana.mint_public();
-    Starkatana.mint_public();
-    Starkatana.mint_public();
-    Starkatana.mint_public();
+    Starkatana._mint(owner);
+    Starkatana._mint(owner);
+    Starkatana._mint(owner);
+    Starkatana._mint(owner);
+    Starkatana._mint(owner);
+    Starkatana._mint(owner);
+    Starkatana._mint(owner);
+    Starkatana._mint(owner);
+    Starkatana._mint(owner);
+    Starkatana._mint(owner);
+    Starkatana._mint(owner);
+    Starkatana._mint(owner);
+    Starkatana._mint(owner);
+    Starkatana._mint(owner);
+    Starkatana._mint(owner);
+    Starkatana._mint(owner);
     
     return ();
 }
